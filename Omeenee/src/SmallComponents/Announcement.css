@@ -1,0 +1,31 @@
+.announcements {
+  width: 96vw;
+  margin: 2rem auto;
+}
+
+.callDiv {
+  background: rgba(34, 28, 28, 0.6);
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.announceCard {
+  height: 10rem;
+  overflow: hidden;
+  margin-top: 1rem;
+  border-radius: var(--borderRadius);
+}
+
+.cardAnnouncement {
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.cardAnnouncement img {
+  height: 100%;
+  width: 20rem;
+  border-radius: 8px;
+}

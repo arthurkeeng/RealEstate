@@ -1,0 +1,52 @@
+/* @media screen and (max-width: 900px) { */
+.nav {
+  /* width: 96vw; */
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 3rem;
+  background: lightgoldenrodyellow;
+}
+
+.navFirst {
+  display: flex;
+  align-items: center;
+}
+
+.navFirst button,
+.navSecond button {
+  width: 2rem;
+  font-size: 3rem;
+  border: none;
+  outline: none;
+  margin-right: 1.4rem;
+  cursor: pointer;
+}
+
+.navSecond {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.navSecond p {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  position: absolute;
+  top: -25%;
+  left: 84%;
+}
+.nav .navSecond button {
+  font-size: 2.3rem;
+}
+
+.logo {
+  font-size: 2.2rem;
+}
+.logo span:first-child {
+  color: rgba(192, 73, 30, 0.9);
+}
+
+.logo span:last-child {
+  color: rgba(54, 30, 192, 0.9);
+}
+/* } */

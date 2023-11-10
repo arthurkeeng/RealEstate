@@ -1,0 +1,27 @@
+.footer {
+  width: var(--ComponentWidth);
+  height: fit-content;
+  margin: var(--AutoMarginTB);
+  background: rgba(72, 55, 55, 0.4);
+  padding-bottom: 6rem;
+}
+
+.footerHeadline {
+  padding: 1rem 2rem;
+  border-radius: var(--borderRadius);
+}
+
+.footerHeadline div {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.footerHeadline div form input {
+  margin-top: 2rem;
+  padding: var(--padding);
+}
+
+.copyright {
+  margin-top: 1.5rem;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+.mobile {
+  background-color: white;
+  width: 68%;
+  position: absolute;
+  top: 75%;
+  left: 3%;
+  height: 0;
+  z-index: 4;
+  overflow: hidden;
+  border-radius: var(--borderRadius);
+  padding: 0;
+  border-right: 2px solid grey;
+  transition: all 0.3s ease-in-out;
+  backface-visibility: hidden;
+}
+.mobCat {
+  padding-top: 1rem;
+}
+.mobCat h3 {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+.mobCat div:first-child {
+  margin-top: 2rem;
+}
+.cats {
+  padding: 1rem 5px;
+  background: rgb(212, 189, 189, 0.5);
+  margin-bottom: 1rem;
+}
+.cats span {
+  margin-left: 2rem;
+}
+.show {
+  padding: 2rem;
+  height: fit-content;
+}

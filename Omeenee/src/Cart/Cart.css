@@ -1,0 +1,31 @@
+.cart {
+  padding: var(--padding);
+  margin: var(--AutoMarginTB);
+  /* margin-bottom: 0 !important; */
+}
+.cartDiv {
+  margin-bottom: 1rem;
+  padding: var(--padding);
+  justify-content: space-around;
+  width: 100%;
+  background: rgb(158, 152, 152, 0.5);
+  border-radius: var(--borderRadius);
+}
+
+.cartDiv img {
+  width: 7rem;
+}
+
+.buttons span {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin: 0 1rem;
+}
+
+.clear {
+  width: fit-content;
+  margin: var(--AutoMarginTB);
+}
+.clear button:not(:last-child) {
+  margin-right: 2rem;
+}

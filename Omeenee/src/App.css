@@ -1,0 +1,37 @@
+/* constants */
+:root {
+  --ComponentWidth: 95%;
+  --borderRadius: 4px;
+  --AutoMargin: 0 auto;
+  --AutoMarginTB: 3rem auto;
+  --transformScale: scale(1.1);
+  --padding: 1rem;
+}
+/* these are constant style values that could be repeated */
+/* this is for diplay */
+.df {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* this is the end of the constant styles */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  /* overflow: hidden; */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: rgba(148, 144, 144, 0.1);
+  /* height: 100vh; */
+}
+
+@media screen and (min-width: 300) and(max-width: 649px) {
+}
