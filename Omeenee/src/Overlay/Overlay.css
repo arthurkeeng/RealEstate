@@ -17,9 +17,11 @@
   margin-bottom: 1rem;
 }
 
+.details {
+  margin-right: 1.5rem;
+}
 .details h3 {
   width: 16rem;
-  margin-right: 1.5rem;
 }
 .details h3 img {
   width: 100%;

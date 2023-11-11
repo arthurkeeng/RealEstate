@@ -7,11 +7,18 @@ import {
   filterCart,
   incrementAmount,
   decrementAmount,
+  addTotal,
 } from "../store/cartSlice";
+import { outCart } from "../store/productSlice";
+
+import { useEffect } from "react";
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state.cart);
+  const { cart, total } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(addTotal());
+  }, [cart]);
   return (
     <main className="cart">
       {cart.length > 0 ? (
@@ -27,11 +34,12 @@ const Cart = () => {
               total,
               amount,
             } = item;
+            console.log(cart);
             return (
-              <div className="cartDiv df">
+              <div className="cartDiv df" key={id}>
                 <img src={image} alt="" />
                 <div>
-                  <h2>{price}</h2>
+                  <h2>N{price}</h2>
                   <h2>{productName}</h2>
                 </div>
                 <div>
@@ -56,13 +64,19 @@ const Cart = () => {
                 </h3>
                 <button
                   className="btn"
-                  onClick={() => dispatch(filterCart(id))}
+                  onClick={() => {
+                    dispatch(filterCart(id));
+                    dispatch(outCart(id));
+                  }}
                 >
                   <FaRegTrashAlt />
                 </button>
               </div>
             );
           })}
+          <div>
+            <h3 className="cartDiv alignBig">Total : {total}</h3>
+          </div>
           <div className="clear" onClick={() => dispatch(clearCart())}>
             <button className="btn ">clear cart</button>
             <Link to="/">
@@ -72,7 +86,7 @@ const Cart = () => {
         </>
       ) : (
         <>
-          <h2 className="cartDiv"> your cart is currently empty</h2>
+          <h2 className="cartDiv alignBig"> your cart is currently empty</h2>
         </>
       )}
     </main>

@@ -1,9 +1,9 @@
 import "./Announcement.css";
-import img1 from "../images/artic.jpg";
-import { useProducts } from "../Context";
-// import { announcements } from "../data";
+// import { useProducts } from "../Context";
+import { useSelector } from "react-redux";
 const Announcement = () => {
-  const { announcements } = useProducts();
+  const { announcements } = useSelector((store) => store.announcements);
+  // const { announcements } = useProducts();
   return (
     <section className="announcements">
       <Heading />

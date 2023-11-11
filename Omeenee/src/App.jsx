@@ -21,9 +21,8 @@ import Home from "./Pages/Home";
 import MobileMenu from "./Category/MobileMenu";
 import SeeAll from "./Pages/SeeAll";
 const App = () => {
-  const [overlay, setOverlay] = useState(true);
   return (
-    <main onClick={() => setOverlay(false)}>
+    <main>
       <Navbar />
       {/* <MobileMenu /> */}
 

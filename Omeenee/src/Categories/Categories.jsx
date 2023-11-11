@@ -1,21 +1,20 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-const Categories = ({ title, showOverlay }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { intoCart } from "../store/productSlice";
+import { addToCart } from "../store/cartSlice";
+const Categories = ({ setProduct, title, showOverlay }) => {
   const { products } = useSelector((state) => state.products);
   return (
     <section className="catSection">
       {title && <Title title={title} />}
       <article className="cat">
         {products.map((product) => {
-          const { id, incart, image, name, description, price } = product;
-
           return (
             <CategoryCard
-              key={id}
+              key={product.id}
               showOverlay={showOverlay}
-              image={image}
-              productName={name}
-              price={price}
+              {...product}
+              setProduct={setProduct}
             />
           );
         })}
@@ -35,15 +34,52 @@ const Title = ({ title }) => {
   );
 };
 
-const CategoryCard = ({ image, productName, price, showOverlay }) => {
+const CategoryCard = ({
+  amount,
+  id,
+  image,
+  name,
+  price,
+  showOverlay,
+  setProduct,
+  description,
+  size,
+  color,
+  inCart,
+}) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="cardList">
-      <div onClick={showOverlay}>
+      <div
+        onClick={() => {
+          showOverlay();
+          setProduct({
+            id,
+            image,
+            name,
+            price,
+            description,
+            size,
+            color,
+            inCart,
+          });
+        }}
+      >
         <img src={image} alt="" />
-        <h3>{productName}</h3>
+        <h3>{name}</h3>
         <h3>N{price}</h3>
       </div>
-      <button className="btn">Add</button>
+      <button
+        disabled={inCart}
+        className="btn"
+        onClick={() => {
+          dispatch(addToCart({ amount, id, image, name, price }));
+          dispatch(intoCart(id));
+        }}
+      >
+        Add
+      </button>
     </div>
   );
 };
