@@ -24,23 +24,17 @@ const Cart = () => {
       {cart.length > 0 ? (
         <>
           {cart.map((item, index) => {
-            const {
-              id,
-              image,
-              productName,
-              price,
-              color,
-              size,
-              total,
-              amount,
-            } = item;
+            const { id, image, name, price, color, size, total, amount } = item;
             console.log(cart);
             return (
               <div className="cartDiv df" key={id}>
-                <img src={image} alt="" />
+                <div>
+                  <img src={image} alt="" />
+                  
+                  <h2>{name}</h2>
+                  </div>
                 <div>
                   <h2>N{price}</h2>
-                  <h2>{productName}</h2>
                 </div>
                 <div>
                   <h2>{color}</h2>
@@ -72,15 +66,20 @@ const Cart = () => {
                   <FaRegTrashAlt />
                 </button>
               </div>
-            );
+            ); 
           })}
           <div>
             <h3 className="cartDiv alignBig">Total : {total}</h3>
           </div>
-          <div className="clear" onClick={() => dispatch(clearCart())}>
-            <button className="btn ">clear cart</button>
+          <div className="clear" >
+            <button className="btn " onClick={() => dispatch(clearCart())}>clear cart</button>
             <Link to="/">
               <button className="btn">Go to home</button>
+            </Link>
+          </div>
+          <div className="clear">
+          <Link to="/">
+              <button className="btn">Get Invoice</button>
             </Link>
           </div>
         </>

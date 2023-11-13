@@ -5,29 +5,34 @@ import img3 from "../images/tokyo.jpg";
 import img4 from "../images/paris.jpg";
 import img5 from "../images/plains.jpg";
 import img6 from "../images/seychelles.jpg";
+import { category } from "../data";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 const Category = () => {
   return (
     <section className="category cat">
-      <CategoryCard image={img5} />
-      <CategoryCard image={img6} />
-      <CategoryCard image={img1} />
-      <CategoryCard image={img3} />
-      <CategoryCard image={img5} />
-      <CategoryCard image={img6} />
-      <CategoryCard image={img4} />
-      <CategoryCard image={img1} />
-      <CategoryCard image={img5} />
-      <CategoryCard image={img2} />
+      { category.map( item =>{
+        const { img , category , name} = item
+        return <CategoryCard  key={category} image={img} 
+        category = {category} name={name}/>
+
+      })}
+     
     </section>
   );
 };
 export default Category;
 
-const CategoryCard = ({ image }) => {
+const CategoryCard = ({ image , category , name}) => {
+  // const [newName , setNewName] = useState(name)
+  
   return (
     <div className="categoryCard catCard">
+      <Link to={`seeAll/${name}`}>
       <img src={image} />
-      <h3>Men's Sneakers</h3>
+      <span>{category}</span>
+
+      </Link>
     </div>
   );
 };

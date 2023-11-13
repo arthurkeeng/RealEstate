@@ -7,6 +7,7 @@ import { FaCartArrowDown, FaCartPlus, FaRegUser } from "react-icons/fa";
 import { useState } from "react";
 import MobileMenu from "../Category/MobileMenu";
 import { useSelector } from "react-redux";
+import Overlay from "../Overlay/Overlay";
 //  ending of file imports
 // beginning of css imports
 
@@ -14,12 +15,24 @@ import { useSelector } from "react-redux";
 // ending of css imports
 
 const Navbar = () => {
+  const [overlay, setOverlay] = useState(false);
+  const [singleProduct, setSingleProduct] = useState({});
   const { cart } = useSelector((store) => store.cart);
+  const { products } = useSelector((store) => store.products);
+
   const [open, setOpen] = useState(false);
+
+  const setProduct = (product) =>{
+    console.log(products);
+    let newProduct = products.find(item =>  item.name.toLowerCase()
+      == product.toLowerCase())
+    setSingleProduct(newProduct)
+    setOverlay(true)
+  }
   return (
     <>
       <nav className="nav df ">
-        <MobileMenu open={open} />
+        <MobileMenu open={open} setOpen = {setOpen}/>
         <div className="navFirst df">
           <button onClick={() => setOpen(!open)}>
             {open ? <AiOutlineClose /> : <GiHamburgerMenu />}
@@ -40,7 +53,13 @@ const Navbar = () => {
             <button>{open ? <FaCartPlus /> : <FaCartArrowDown />}</button>
           </Link>
         </div>
-        <Form />
+        {overlay && (
+        <Overlay
+          showOverlay={() => setOverlay(!overlay)}
+          singleProduct={singleProduct}
+        />
+      )}
+        <Form search = {(product)=>setProduct(product)}/>
       </nav>
     </>
   );

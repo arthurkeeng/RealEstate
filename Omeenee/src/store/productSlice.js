@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { products } from "../data";
+import { filterCategories } from "../functions/repeatingFunctions";
 
 const initialState = {
   products,
@@ -11,7 +12,6 @@ const productSlice = createSlice({
   reducers: {
     intoCart: (state, action) => {
       let id = action.payload;
-
       let newItem = state.products.find((item) => item.id == id);
       newItem.inCart = true;
     },
@@ -20,9 +20,12 @@ const productSlice = createSlice({
       let newItem = state.products.find((item) => item.id == id);
       newItem.inCart = false;
     },
+    filterProducts : (state , {payload}) =>{
+      state.products = filterCategories(state.products , payload.category)
+    }
   },
 });
 
-export const { intoCart, outCart } = productSlice.actions;
+export const { intoCart, outCart ,filterProducts} = productSlice.actions;
 
 export default productSlice.reducer;

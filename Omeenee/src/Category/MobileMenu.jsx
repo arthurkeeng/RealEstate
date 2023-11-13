@@ -1,34 +1,26 @@
-import { FaFirstOrder } from "react-icons/fa";
+// this is used in the Navbar component
 
-const MobileMenu = ({ open }) => {
+import { FaFirstOrder } from "react-icons/fa";
+import { category } from "../data";
+import { Link } from "react-router-dom";
+
+const MobileMenu = ({ open , setOpen}) => {
   return (
     <section className={`mobile ${open && "show"}`}>
       <div className="mobCat">
         <h3>Our Categories</h3>
-        <div>
+        { category.map( item =>{
+          const {  name , category } = item
+        return <div key={name} onClick={()=> setOpen(false)}>
           <h2 className="da cats">
             <FaFirstOrder />
-            <span>Orders </span>
+            <Link to={`/seeAll/${name}`}
+            
+            >{category} </Link>
           </h2>
         </div>
-        <div>
-          <h2 className="da cats">
-            <FaFirstOrder />
-            <span>Orders </span>
-          </h2>
-        </div>
-        <div>
-          <h2 className="da cats">
-            <FaFirstOrder />
-            <span>Orders </span>
-          </h2>
-        </div>
-        <div>
-          <h2 className="da cats">
-            <FaFirstOrder />
-            <span>Orders </span>
-          </h2>
-        </div>
+        })}
+       
       </div>
     </section>
   );

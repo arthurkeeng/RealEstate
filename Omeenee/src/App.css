@@ -30,8 +30,7 @@ html {
 
 body {
   background-color: rgba(148, 144, 144, 0.1);
-  /* height: 100vh; */
+  /* height: fit-content; */
+  /* max-width: 85vw; */
 }
 
-@media screen and (min-width: 300) and(max-width: 649px) {
-}

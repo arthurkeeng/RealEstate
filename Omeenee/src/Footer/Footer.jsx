@@ -8,7 +8,7 @@ const Footer = () => {
         </h2>
         <div>
           <h4>New To OmeeNee</h4>
-          <p>Subscribe to our newsletter to get updates on our products</p>
+          <p>Know of new products first</p>
           <form action="">
             <input type="text" placeholder="Please enter your email" />
           </form>

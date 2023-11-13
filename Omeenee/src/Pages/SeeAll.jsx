@@ -2,16 +2,17 @@ import { useState } from "react";
 import Categories from "../Categories/Categories";
 import Category from "../Category/Category";
 import Overlay from "../Overlay/Overlay";
+import Announcement from "../SmallComponents/Announcement";
 
-const SeeAll = () => {
+const SeeAll = ({category}) => {
   const [overlay, setOverlay] = useState(false);
-  const [singleProduct, setSingleProduct] = useState({});
 
+  const [singleProduct, setSingleProduct] = useState({});
   return (
     <>
-      <Category />
+    <Announcement/>
       <div style={styles}>
-        <h1>Agro Products</h1>
+        <h1>{category?.toUpperCase()}</h1>
       </div>
       {overlay && (
         <Overlay
@@ -22,6 +23,7 @@ const SeeAll = () => {
       <Categories
         showOverlay={() => setOverlay(!overlay)}
         setProduct={setSingleProduct}
+        category = {category}
       />
     </>
   );

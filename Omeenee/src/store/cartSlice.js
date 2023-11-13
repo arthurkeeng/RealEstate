@@ -37,7 +37,10 @@ const cartSlice = createSlice({
       state.total = total;
     },
     addToCart: (state, { payload }) => {
-      state.cart = [...state.cart, { ...payload }];
+    state.cart = [...state.cart, { ...payload }]
+  
+
+      
     },
   },
 });

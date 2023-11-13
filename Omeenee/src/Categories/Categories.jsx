@@ -1,9 +1,17 @@
+// this is used in the SeeAll component
+
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { intoCart } from "../store/productSlice";
+import { filterProducts, intoCart } from "../store/productSlice";
 import { addToCart } from "../store/cartSlice";
-const Categories = ({ setProduct, title, showOverlay }) => {
-  const { products } = useSelector((state) => state.products);
+import { useEffect, useState } from "react";
+const Categories = ({ setProduct, title, showOverlay ,category}) => {
+  const dispatch = useDispatch();
+
+ let { products } = useSelector((state) => state.products);
+  useEffect(()=>{
+    dispatch(filterProducts({category}))
+  } , [category])
   return (
     <section className="catSection">
       {title && <Title title={title} />}
@@ -48,7 +56,6 @@ const CategoryCard = ({
   inCart,
 }) => {
   const dispatch = useDispatch();
-
   return (
     <div className="cardList">
       <div
@@ -56,6 +63,7 @@ const CategoryCard = ({
           showOverlay();
           setProduct({
             id,
+            amount,
             image,
             name,
             price,
