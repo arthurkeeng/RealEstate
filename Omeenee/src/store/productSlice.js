@@ -4,6 +4,7 @@ import { filterCategories } from "../functions/repeatingFunctions";
 
 const initialState = {
   products,
+  originalProducts : products
 };
 
 const productSlice = createSlice({
@@ -21,7 +22,7 @@ const productSlice = createSlice({
       newItem.inCart = false;
     },
     filterProducts : (state , {payload}) =>{
-      state.products = filterCategories(state.products , payload.category)
+     state.products = filterCategories(state.originalProducts , payload.category)
     }
   },
 });

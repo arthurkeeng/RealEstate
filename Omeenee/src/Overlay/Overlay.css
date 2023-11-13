@@ -1,15 +1,20 @@
 .overlay {
-  width: 75%;
   height: 70vh;
   position: fixed;
   top: 10%;
-  left: 15%;
   margin: 0 auto;
   background: rgba(238, 215, 215, 0.9);
   z-index: 2;
   visibility: visible;
 }
-
+.small{
+  width: 75%;
+  left: 15%;
+}
+.wide{
+  width: 95%;
+  left: 2%;
+}
 .overlayDiv {
   height: 70%;
   padding: 0 1rem;

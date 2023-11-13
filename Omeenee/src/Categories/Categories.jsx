@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { filterProducts, intoCart } from "../store/productSlice";
 import { addToCart } from "../store/cartSlice";
 import { useEffect, useState } from "react";
+import { filterCategories } from "../functions/repeatingFunctions";
 const Categories = ({ setProduct, title, showOverlay ,category}) => {
   const dispatch = useDispatch();
-
+  
  let { products } = useSelector((state) => state.products);
   useEffect(()=>{
     dispatch(filterProducts({category}))

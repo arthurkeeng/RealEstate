@@ -25,7 +25,6 @@ const Cart = () => {
         <>
           {cart.map((item, index) => {
             const { id, image, name, price, color, size, total, amount } = item;
-            console.log(cart);
             return (
               <div className="cartDiv df" key={id}>
                 <div>

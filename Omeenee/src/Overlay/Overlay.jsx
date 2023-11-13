@@ -19,7 +19,7 @@ const Overlay = ({ showOverlay, singleProduct }) => {
         })
       }
       return (
-      <article className="overlay">
+      <article className="overlay wide">
         <div className="overlayDiv df">
           <div className="details">
             <h3
@@ -57,7 +57,6 @@ const Overlay = ({ showOverlay, singleProduct }) => {
             disabled={inCart}
             className="btn"
             onClick={() => {
-              console.log(sizeColor);
               dispatch(addToCart({ amount, id, image, name, price }));
               dispatch(intoCart(id));
             }}
@@ -73,7 +72,7 @@ const Overlay = ({ showOverlay, singleProduct }) => {
     );
   }
   else{
-    return       <article className="overlay"
+    return       <article className="overlay small"
       style={{
         height:'50%',
         top: '24%' }}
