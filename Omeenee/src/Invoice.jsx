@@ -19,6 +19,10 @@ const Invoice = ({cart , total , address}) => {
                   <h2>N{price}</h2>
                 </div>
                 <div>
+                    <p>Quantity</p>
+                    <h3>{amount}</h3>
+                </div>
+                <div>
                   <h2>{color}</h2>
                   <h2>{size}</h2>
                 </div>
