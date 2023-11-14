@@ -2,6 +2,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import ReactDOM  from "react-dom";
 import {
   clearCart,
   filterCart,
@@ -10,14 +11,32 @@ import {
   addTotal,
 } from "../store/cartSlice";
 import { outCart } from "../store/productSlice";
-
-import { useEffect } from "react";
+import html2pdf from 'html2pdf.js'
+import { useEffect, useState } from "react";
+import Invoice from "../invoice";
 
 const Cart = () => {
   const { cart, total } = useSelector((state) => state.cart);
+  const [ value , setValue ] = useState('')
   const dispatch = useDispatch();
+  const submit = (e) =>{
+    e.preventDefault()
+    localStorage.setItem('address', value)
+    const element = document.createElement('div')
+    document.body.appendChild(element)
+    ReactDOM.render(<Invoice cart = {cart} total ={total} address = {value}/>
+, element )
+    html2pdf(element)
+
+    document.body.removeChild(element)
+  }
   useEffect(() => {
     dispatch(addTotal());
+    const getItem = localStorage.getItem('address')
+    setValue(() =>{
+      return getItem ? getItem : 'Enter Address'
+    
+    })
   }, [cart]);
   return (
     <main className="cart">
@@ -34,12 +53,9 @@ const Cart = () => {
                   </div>
                 <div>
                   <h2>N{price}</h2>
-                </div>
-                <div>
                   <h2>{color}</h2>
                   <h2>{size}</h2>
                 </div>
-
                 <h3 className="buttons">
                   <button
                     className="btn"
@@ -77,9 +93,20 @@ const Cart = () => {
             </Link>
           </div>
           <div className="clear">
-          <Link to="/">
-              <button className="btn">Get Invoice</button>
-            </Link>
+            <form onSubmit={submit}>
+              <label 
+              style={
+                  styles.label
+              }
+              htmlFor="address">Enter Address</label>
+              <input 
+              style={styles.input}
+              type="text"  value={value}
+              name="address"
+              onChange={(e) => setValue(e.target.value)}
+              />
+              <button type='submit' className="btn">Get Invoice</button>
+            </form>
           </div>
         </>
       ) : (
@@ -92,3 +119,15 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const styles = {
+  label : {
+     display: 'block',
+    fontSize: '1.4rem',
+    fontWeight: 'bold'
+  },
+  input : {
+    padding : '5px 5px',
+    marginRight : '1rem'
+  }
+}

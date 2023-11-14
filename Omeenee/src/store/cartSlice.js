@@ -39,8 +39,8 @@ const cartSlice = createSlice({
     addToCart: (state, { payload }) => {
       let product = state.cart.find(item =>  item.id == payload.id
       )
-
-    !product && (state.cart = [...state.cart, { ...payload }])
+        let sizeColor = !payload.size && !payload.color && { size : 'L' , color : 'black'}
+    !product && (state.cart = [...state.cart, { ...payload , ...sizeColor}])
   
 
       

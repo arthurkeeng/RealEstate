@@ -25,7 +25,6 @@ const App = () => {
   return (
     <main>
       <Navbar />
-      {/* <MobileMenu /> */}
 
       <Routes>
         <Route path="/" element={<Home />} />

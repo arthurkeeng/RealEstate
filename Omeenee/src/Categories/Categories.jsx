@@ -37,7 +37,7 @@ export default Categories;
 const Title = ({ title }) => {
   return (
     <div className="titleDiv">
-      <h3>{title}</h3>
+      <h3>All products</h3>
       <Link to="/seeAll"> See all</Link>
     </div>
   );

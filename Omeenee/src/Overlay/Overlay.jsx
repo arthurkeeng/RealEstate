@@ -57,7 +57,7 @@ const Overlay = ({ showOverlay, singleProduct }) => {
             disabled={inCart}
             className="btn"
             onClick={() => {
-              dispatch(addToCart({ amount, id, image, name, price }));
+              dispatch(addToCart({ amount, id, image, name, price , ...sizeColor}));
               dispatch(intoCart(id));
             }}
           >
