@@ -21,10 +21,11 @@ import Home from "./Pages/Home";
 import MobileMenu from "./Category/MobileMenu";
 import SeeAll from "./Pages/SeeAll";
 import { category } from "./data";
+import Products from "./admin/Products";
 const App = () => {
   return (
-    <main>
-      <Navbar />
+    <main className="appMain">
+      {/* <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,7 +41,8 @@ const App = () => {
       
 
       </Routes>
-      <Footer />
+      <Footer /> */}
+      <Products/>
     </main>
   );
 };

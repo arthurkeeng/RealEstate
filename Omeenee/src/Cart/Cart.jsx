@@ -26,7 +26,21 @@ const Cart = () => {
     document.body.appendChild(element)
     ReactDOM.render(<Invoice cart = {cart} total ={total} address = {value}/>
 , element )
-    html2pdf(element)
+// html2pdf(element)
+
+// const options = {
+//   filename : 'invoice.pdf',
+//   jsPDF : {
+//     encryption : {userPassword : 'keengarthur'}
+//   }
+// }
+//     html2pdf().from(element).set(options).outputPdf().then(pdf=>{
+//       const blob = new Blob([pdf], {type :'application/pdf'})
+//       const link = document.createElement('a')
+//       link.href = URL.createObjectURL(blob)
+//       link.download = options.filename
+//       link.click()
+//     })
 
     document.body.removeChild(element)
   }
@@ -105,7 +119,10 @@ const Cart = () => {
               name="address"
               onChange={(e) => setValue(e.target.value)}
               />
-              <button type='submit' className="btn">Get Invoice</button>
+              <button
+
+            title="address cannot be blank"  
+              type='submit' className="btn">Get Invoice</button>
             </form>
           </div>
         </>

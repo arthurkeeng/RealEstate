@@ -33,4 +33,22 @@ body {
   /* height: fit-content; */
   /* max-width: 85vw; */
 }
+.appMain{
+  max-width: 90rem;
+  margin :var(--AutoMargin)
+}
 
+.productForm form{
+  margin-bottom: 2rem;
+}
+.productForm form input{
+  padding: .8rem;
+}
+
+.productForm form label{
+  font-size: 1.5rem;
+}
+
+.productForm form input , .productForm form label{
+  display: block;
+}
