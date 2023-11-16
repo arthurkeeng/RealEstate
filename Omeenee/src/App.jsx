@@ -30,19 +30,20 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path='seeAll' element={<SeeAll />}/>
-        { category.map(item =>{
-          const {name} = item
-          return <Route key= {name} path={`seeAll/${name}`} 
-          element={<SeeAll category={name}/>}/>
+        <Route path="seeAll" element={<SeeAll />} />
+        {category.map((item) => {
+          const { name } = item;
+          return (
+            <Route
+              key={name}
+              path={`seeAll/${name}`}
+              element={<SeeAll category={name} />}
+            />
+          );
         })}
-
-
-      
-
       </Routes>
       <Footer /> */}
-      <Products/>
+      <Products />
     </main>
   );
 };
