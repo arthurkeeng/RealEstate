@@ -50,3 +50,7 @@
   color: rgba(54, 30, 192, 0.9);
 }
 /* } */
+
+.button {
+  background: none;
+}

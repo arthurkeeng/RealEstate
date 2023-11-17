@@ -22,19 +22,20 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
 
-  const setProduct = (product) =>{
+  const setProduct = (product) => {
     console.log(products);
-    let newProduct = products.find(item =>  item.name.toLowerCase()
-      == product.toLowerCase())
-    setSingleProduct(newProduct)
-    setOverlay(true)
-  }
+    let newProduct = products.find(
+      (item) => item.name.toLowerCase() == product.toLowerCase()
+    );
+    setSingleProduct(newProduct);
+    setOverlay(true);
+  };
   return (
     <>
       <nav className="nav df ">
-        <MobileMenu open={open} setOpen = {setOpen}/>
+        <MobileMenu open={open} setOpen={setOpen} />
         <div className="navFirst df">
-          <button onClick={() => setOpen(!open)}>
+          <button className="button" onClick={() => setOpen(!open)}>
             {open ? <AiOutlineClose /> : <GiHamburgerMenu />}
           </button>
           <h2 className="logo">
@@ -46,20 +47,22 @@ const Navbar = () => {
         </div>
         <div className="navSecond df">
           <p> {cart.length} </p>
-          <button>
+          <button className="button">
             <FaRegUser />
           </button>
           <Link to="/cart">
-            <button>{open ? <FaCartPlus /> : <FaCartArrowDown />}</button>
+            <button className="button">
+              {open ? <FaCartPlus /> : <FaCartArrowDown />}
+            </button>
           </Link>
         </div>
         {overlay && (
-        <Overlay
-          showOverlay={() => setOverlay(!overlay)}
-          singleProduct={singleProduct}
-        />
-      )}
-        <Form search = {(product)=>setProduct(product)}/>
+          <Overlay
+            showOverlay={() => setOverlay(!overlay)}
+            singleProduct={singleProduct}
+          />
+        )}
+        <Form search={(product) => setProduct(product)} />
       </nav>
     </>
   );

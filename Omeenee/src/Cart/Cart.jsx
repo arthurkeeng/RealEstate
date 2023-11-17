@@ -2,7 +2,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ReactDOM  from "react-dom";
+import ReactDOM from "react-dom";
 import {
   clearCart,
   filterCart,
@@ -11,46 +11,32 @@ import {
   addTotal,
 } from "../store/cartSlice";
 import { outCart } from "../store/productSlice";
-import html2pdf from 'html2pdf.js'
+import html2pdf from "html2pdf.js";
 import { useEffect, useState } from "react";
 import Invoice from "../invoice";
 
 const Cart = () => {
   const { cart, total } = useSelector((state) => state.cart);
-  const [ value , setValue ] = useState('')
+  const [value, setValue] = useState("");
   const dispatch = useDispatch();
-  const submit = (e) =>{
-    e.preventDefault()
-    localStorage.setItem('address', value)
-    const element = document.createElement('div')
-    document.body.appendChild(element)
-    ReactDOM.render(<Invoice cart = {cart} total ={total} address = {value}/>
-, element )
-// html2pdf(element)
+  const submit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("address", value);
+    const element = document.createElement("div");
+    document.body.appendChild(element);
+    ReactDOM.render(
+      <Invoice cart={cart} total={total} address={value} />,
+      element
+    );
 
-// const options = {
-//   filename : 'invoice.pdf',
-//   jsPDF : {
-//     encryption : {userPassword : 'keengarthur'}
-//   }
-// }
-//     html2pdf().from(element).set(options).outputPdf().then(pdf=>{
-//       const blob = new Blob([pdf], {type :'application/pdf'})
-//       const link = document.createElement('a')
-//       link.href = URL.createObjectURL(blob)
-//       link.download = options.filename
-//       link.click()
-//     })
-
-    document.body.removeChild(element)
-  }
+    document.body.removeChild(element);
+  };
   useEffect(() => {
     dispatch(addTotal());
-    const getItem = localStorage.getItem('address')
-    setValue(() =>{
-      return getItem ? getItem : 'Enter Address'
-    
-    })
+    const getItem = localStorage.getItem("address");
+    setValue(() => {
+      return getItem ? getItem : "Enter Address";
+    });
   }, [cart]);
   return (
     <main className="cart">
@@ -62,9 +48,9 @@ const Cart = () => {
               <div className="cartDiv df" key={id}>
                 <div>
                   <img src={image} alt="" />
-                  
+
                   <h2>{name}</h2>
-                  </div>
+                </div>
                 <div>
                   <h2>N{price}</h2>
                   <h2>{color}</h2>
@@ -95,34 +81,39 @@ const Cart = () => {
                   <FaRegTrashAlt />
                 </button>
               </div>
-            ); 
+            );
           })}
           <div>
             <h3 className="cartDiv alignBig">Total : {total}</h3>
           </div>
-          <div className="clear" >
-            <button className="btn " onClick={() => dispatch(clearCart())}>clear cart</button>
+          <div className="clear">
+            <button className="btn " onClick={() => dispatch(clearCart())}>
+              clear cart
+            </button>
             <Link to="/">
               <button className="btn">Go to home</button>
             </Link>
           </div>
           <div className="clear">
             <form onSubmit={submit}>
-              <label 
-              style={
-                  styles.label
-              }
-              htmlFor="address">Enter Address</label>
-              <input 
-              style={styles.input}
-              type="text"  value={value}
-              name="address"
-              onChange={(e) => setValue(e.target.value)}
+              <label style={styles.label} htmlFor="address">
+                Enter Address
+              </label>
+              <input
+                style={styles.input}
+                type="text"
+                value={value}
+                name="address"
+                onChange={(e) => setValue(e.target.value)}
               />
               <button
-
-            title="address cannot be blank"  
-              type='submit' className="btn">Get Invoice</button>
+                disabled={!value}
+                title="address cannot be blank"
+                type="submit"
+                className="btn"
+              >
+                Get Invoice
+              </button>
             </form>
           </div>
         </>
@@ -138,13 +129,13 @@ const Cart = () => {
 export default Cart;
 
 const styles = {
-  label : {
-     display: 'block',
-    fontSize: '1.4rem',
-    fontWeight: 'bold'
+  label: {
+    display: "block",
+    fontSize: "1.4rem",
+    fontWeight: "bold",
   },
-  input : {
-    padding : '5px 5px',
-    marginRight : '1rem'
-  }
-}
+  input: {
+    padding: "5px 5px",
+    marginRight: "1rem",
+  },
+};
