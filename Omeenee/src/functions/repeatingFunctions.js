@@ -39,13 +39,4 @@ export const deleteImage = (ref, getStorage, url, deleteObject) => {
     .catch((err) => {
       alert("something happened");
     });
-
-  // const imageRef = ref(storage, url);
-  // deleteObject(imageRef)
-  //   .then(() => {
-  //     alert("image has been deleted");
-  //   })
-  //   .catch((err) => {
-  //     alert("image was not deleted");
-  //   });
 };
