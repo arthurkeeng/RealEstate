@@ -1,3 +1,4 @@
+import { deleteObject } from "firebase/storage";
 import { v4 } from "uuid";
 
 export const filterCategories = (list, category = null) => {
@@ -29,4 +30,22 @@ export const uploadImage = (
     // setUrl(url);
     setFormData({ ...formData, image: url });
   });
+};
+
+export const deleteImage = (ref, getStorage, url, deleteObject) => {
+  const deleteRef = ref(getStorage(), url);
+  deleteObject(deleteRef)
+    .then(() => alert("deleted successfully"))
+    .catch((err) => {
+      alert("something happened");
+    });
+
+  // const imageRef = ref(storage, url);
+  // deleteObject(imageRef)
+  //   .then(() => {
+  //     alert("image has been deleted");
+  //   })
+  //   .catch((err) => {
+  //     alert("image was not deleted");
+  //   });
 };
