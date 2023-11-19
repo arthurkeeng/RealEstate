@@ -6,6 +6,7 @@ const PORT = 4000;
 const cors = require("cors");
 
 const productRouter = require("./routes/productRouter");
+const categoryRouter = require("./routes/categoryRouter");
 
 const start = async () => {
   try {
@@ -20,3 +21,4 @@ start();
 app.use(cors());
 app.use(express.json());
 app.use("/api/v1/products", productRouter);
+app.use("/api/v1/category", categoryRouter);

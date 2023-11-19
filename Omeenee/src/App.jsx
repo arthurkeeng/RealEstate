@@ -21,7 +21,7 @@ import Home from "./Pages/Home";
 import MobileMenu from "./Category/MobileMenu";
 import SeeAll from "./Pages/SeeAll";
 import { category } from "./data";
-import Products from "./admin/Products";
+import Panel from "./admin/AdminPanel";
 const App = () => {
   return (
     <main className="appMain">
@@ -43,7 +43,7 @@ const App = () => {
         })}
       </Routes>
       <Footer /> */}
-      <Products />
+      <Panel />
     </main>
   );
 };
