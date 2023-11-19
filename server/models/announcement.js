@@ -5,6 +5,7 @@ const AnnouncementSchema = new mongoose.Schema({
   id: { type: String, default: uuidv4() },
 
   image: { type: String, required: true },
+  name: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Announcement", AnnouncementSchema);
