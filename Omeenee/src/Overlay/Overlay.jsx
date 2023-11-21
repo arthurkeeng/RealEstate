@@ -6,19 +6,20 @@ import { useEffect, useState } from "react";
 
 const Overlay = ({ showOverlay, singleProduct }) => {
   const dispatch = useDispatch();
-  const [sizeColor , setSizeColor] = useState({})
-  if(singleProduct){
-
-    const { id, inCart, image, name, price, description, size, color, amount } =
+  const [sizeColor, setSizeColor] = useState({});
+  if (singleProduct) {
+    let { id, inCart, image, name, price, description, size, color, amount } =
       singleProduct;
-
-      const selectItem =(e) =>{
-        const name = e.target.name
-        setSizeColor({
-         ...sizeColor ,  [name] : e.target.value
-        })
-      }
-      return (
+    size = size[0].split(",");
+    color = color[0].split(",");
+    const selectItem = (e) => {
+      const name = e.target.name;
+      setSizeColor({
+        ...sizeColor,
+        [name]: e.target.value,
+      });
+    };
+    return (
       <article className="overlay wide">
         <div className="overlayDiv df">
           <div className="details">
@@ -40,24 +41,32 @@ const Overlay = ({ showOverlay, singleProduct }) => {
           </div>
         </div>
         <div className="select">
-          <select name="color" 
-          onClick={(e) =>selectItem(e)}>
+          <select name="color" onClick={(e) => selectItem(e)}>
             {color.map((item) => {
-              return <option value={item} key={item}> {item}</option>;
+              return (
+                <option value={item} key={item}>
+                  {" "}
+                  {item}
+                </option>
+              );
             })}
           </select>
-          <select name="size" 
-           onClick={(e) =>selectItem(e)}
-          >
+          <select name="size" onClick={(e) => selectItem(e)}>
             {size.map((item) => {
-              return <option value={item} key={item}>{item}</option>;
+              return (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              );
             })}
           </select>
           <button
             disabled={inCart}
             className="btn"
             onClick={() => {
-              dispatch(addToCart({ amount, id, image, name, price , ...sizeColor}));
+              dispatch(
+                addToCart({ amount, id, image, name, price, ...sizeColor })
+              );
               dispatch(intoCart(id));
             }}
           >
@@ -70,30 +79,31 @@ const Overlay = ({ showOverlay, singleProduct }) => {
         </div>
       </article>
     );
-  }
-  else{
-    return       <article className="overlay small"
-      style={{
-        height:'50%',
-        top: '24%' }}
-    >
-   
-   
-      <div className="select">
-
-        <h1
-        style={{fontSize:'3.6rem',
-          marginTop:'14rem',
-          marginBottom : '3rem'
+  } else {
+    return (
+      <article
+        className="overlay small"
+        style={{
+          height: "50%",
+          top: "24%",
         }}
-        >
-          Sorry, No such item exists in our catalog
-        </h1>
-      <button className="btn" onClick={showOverlay}>
-        <AiOutlineClose />
-      </button>
-    </div>
-  </article>
+      >
+        <div className="select">
+          <h1
+            style={{
+              fontSize: "3.6rem",
+              marginTop: "14rem",
+              marginBottom: "3rem",
+            }}
+          >
+            Sorry, No such item exists in our catalog
+          </h1>
+          <button className="btn" onClick={showOverlay}>
+            <AiOutlineClose />
+          </button>
+        </div>
+      </article>
+    );
   }
 };
 

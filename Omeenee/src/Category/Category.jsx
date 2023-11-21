@@ -8,30 +8,32 @@ import img6 from "../images/seychelles.jpg";
 import { category } from "../data";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
 const Category = () => {
+  let { category } = useSelector((state) => state.category);
+
   return (
     <section className="category cat">
-      { category.map( item =>{
-        const { img , category , name} = item
-        return <CategoryCard  key={category} image={img} 
-        category = {category} name={name}/>
-
+      {category.map((item) => {
+        const { image, category, name } = item;
+        return (
+          <CategoryCard key={name} image={image} category={name} name={name} />
+        );
       })}
-     
     </section>
   );
 };
 export default Category;
 
-const CategoryCard = ({ image , category , name}) => {
+const CategoryCard = ({ image, category, name }) => {
   // const [newName , setNewName] = useState(name)
-  
+
   return (
     <div className="categoryCard catCard">
       <Link to={`seeAll/${name}`}>
-      <img src={image} />
-      <span>{category}</span>
-
+        <img src={image} />
+        <span>{category}</span>
       </Link>
     </div>
   );

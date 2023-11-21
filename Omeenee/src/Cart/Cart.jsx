@@ -24,6 +24,7 @@ const Cart = () => {
     localStorage.setItem("address", value);
     const element = document.createElement("div");
     document.body.appendChild(element);
+
     ReactDOM.render(
       <Invoice cart={cart} total={total} address={value} />,
       element
