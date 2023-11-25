@@ -23,9 +23,7 @@
   width: 100%;
   margin-right: 1rem;
   border-radius: 8px;
-    object-fit: cover;
-
-
+  object-fit: cover;
 }
 
 .cardAnnouncement img {
@@ -35,19 +33,37 @@
   object-fit: cover;
 }
 
-@media screen and (max-width : 500px) {
-.announceCard{
-  display: block !important;
-  height: 20rem;
-  border-radius: 8px;
-
-}
-  .cardAnnouncement img{
+@media screen and (max-width: 500px) {
+  .announceCard {
+    display: block !important;
+    height: 20rem;
+    border-radius: 8px;
+  }
+  .cardAnnouncement img {
     height: 100%;
     width: 85%;
     margin: 0 auto;
     display: block;
-  border-radius: 8px;
+    border-radius: 8px;
+  }
+}
 
+@media screen and (min-width: 501px) {
+  .announcements {
+    width: 100%;
+  }
+
+  .announceCard {
+    display: block !important;
+    height: 30rem;
+    border-radius: 8px;
+  }
+  .cardAnnouncement img {
+    height: 100%;
+    width: 85%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
   }
 }

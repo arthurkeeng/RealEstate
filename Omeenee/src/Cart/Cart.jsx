@@ -19,7 +19,7 @@ const Cart = () => {
   const { cart, total } = useSelector((state) => state.cart);
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     localStorage.setItem("address", value);
     const element = document.createElement("div");
@@ -29,6 +29,8 @@ const Cart = () => {
       <Invoice cart={cart} total={total} address={value} />,
       element
     );
+    const imageOptions = { allowTaint: true, useCORS: true };
+    await html2pdf(element, { image: imageOptions });
 
     document.body.removeChild(element);
   };

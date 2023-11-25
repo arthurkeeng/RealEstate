@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { products } from "../data";
+import { products } from "../data";
 import { filterCategories } from "../functions/repeatingFunctions";
 
 const initialState = {
-  products: [],
-  originalProducts: [],
+  products,
+  originalProducts: products,
 };
 
 const productSlice = createSlice({

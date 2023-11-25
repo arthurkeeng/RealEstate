@@ -52,15 +52,17 @@
 .cat {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto auto;
-
 }
 
 .cardList:hover {
   transform: var(--transformScale);
 }
 
-@media screen and (max-width : 500px) {
-  .cat{
+@media screen and (max-width: 500px) {
+  .cat {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media screen and (min-width: 501px) {
 }

@@ -18,9 +18,9 @@ const start = async () => {
   }
 };
 
-start();
 app.use(cors());
 app.use(express.json());
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/announcement", announcementRouter);
+start();

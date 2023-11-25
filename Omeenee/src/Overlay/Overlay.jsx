@@ -36,7 +36,7 @@ const Overlay = ({ showOverlay, singleProduct }) => {
               <p>N {price}</p>
             </h3>
           </div>
-          <div>
+          <div className="description">
             <p>{description}</p>
           </div>
         </div>

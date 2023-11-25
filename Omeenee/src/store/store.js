@@ -11,4 +11,5 @@ export const store = configureStore({
     announcements: announcementsReducer,
     category: categoryReducer,
   },
+  devTools: false,
 });

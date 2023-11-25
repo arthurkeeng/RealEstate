@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const app = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: "http://omeenee-api.onrender.com",
 });
 
 export default app;

@@ -16,7 +16,7 @@ const Category = () => {
   return (
     <section className="category cat">
       {category.map((item) => {
-        const { image, category, name } = item;
+        const { img: image, category, name } = item;
         return (
           <CategoryCard key={name} image={image} category={name} name={name} />
         );

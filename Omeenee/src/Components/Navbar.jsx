@@ -23,7 +23,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const setProduct = (product) => {
-    console.log(products);
     let newProduct = products.find(
       (item) => item.name.toLowerCase() == product.toLowerCase()
     );

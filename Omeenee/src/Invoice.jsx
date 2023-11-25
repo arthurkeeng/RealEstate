@@ -3,10 +3,11 @@ const Invoice = ({ cart, total, address }) => {
     <main className="cart">
       {cart.map((item, index) => {
         const { id, image, name, price, color, size, total, amount } = item;
+        console.log(image);
         return (
           <div className="cartDiv df" key={id}>
             <div>
-              <img src={image} alt="" />
+              {/* <img src={image} alt="" /> */}
 
               <h2>{name}</h2>
             </div>
@@ -18,8 +19,8 @@ const Invoice = ({ cart, total, address }) => {
               <h3>{amount}</h3>
             </div>
             <div>
-              <h2>{color}</h2>
-              <h2>{size}</h2>
+              <h2>color : {color}</h2>
+              <h2>size : {size}</h2>
             </div>
           </div>
         );
