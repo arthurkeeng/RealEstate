@@ -18,7 +18,13 @@ const start = async () => {
   }
 };
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https//omeenee.onrender.com", "https//products.onrender.com"],
+    methods: "GET, HEAD , PUT , PATCH , POST , DELETE",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/category", categoryRouter);
